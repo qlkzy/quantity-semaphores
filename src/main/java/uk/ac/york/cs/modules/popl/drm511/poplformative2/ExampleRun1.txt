@@ -1,86 +1,87 @@
+run:
 Starting AcquirerThread for quantity = 1
+Starting AcquirerThread for quantity = 6
 Starting AcquirerThread for quantity = 4
 Starting AcquirerThread for quantity = 2
-Acquiring 2 permits...
-Acquiring 4 permits...
-Acquiring 1 permits...
-Acquired 2 permits.
-Starting AcquirerThread for quantity = 6
-Acquiring 6 permits...
-Acquired 4 permits.
-Acquired 1 permits.
-Acquired 6 permits.
-Released 6 permits.
-Released 4 permits.
+Acquiring 2 permits on iteration 0...
+Acquiring 4 permits on iteration 0...
 Starting AcquirerThread for quantity = 10
-Acquiring 10 permits...
-Acquired 10 permits.
-Released 10 permits.
-Acquiring 10 permits...
-Released 2 permits.
-Acquired 10 permits.
-Released 10 permits.
-Acquiring 4 permits...
-Acquired 4 permits.
-Released 4 permits.
-Acquiring 4 permits...
-Acquiring 6 permits...
-Released 1 permits.
-Acquiring 1 permits...
-Acquiring 10 permits...
-Acquired 6 permits.
-Released 6 permits.
-Acquiring 6 permits...
-Acquired 6 permits.
-Released 6 permits.
-Acquiring 6 permits...
-Acquired 6 permits.
-Released 6 permits.
-Acquiring 6 permits...
-Acquired 6 permits.
-Released 6 permits.
-Finished AcquirerThread for quantity = 6
-Acquired 1 permits.
-Released 1 permits.
-Acquiring 1 permits...
-Acquired 1 permits.
-Released 1 permits.
-Acquiring 1 permits...
-Acquired 1 permits.
-Released 1 permits.
-Acquiring 1 permits...
-Acquired 1 permits.
-Released 1 permits.
-Finished AcquirerThread for quantity = 1
-Acquired 4 permits.
-Released 4 permits.
-Acquiring 4 permits...
-Acquired 4 permits.
-Released 4 permits.
-Acquiring 4 permits...
-Acquired 4 permits.
-Released 4 permits.
-Finished AcquirerThread for quantity = 4
-Acquiring 2 permits...
-Acquired 2 permits.
-Released 2 permits.
-Acquiring 2 permits...
-Acquired 2 permits.
-Released 2 permits.
-Acquiring 2 permits...
-Acquired 2 permits.
-Released 2 permits.
-Acquiring 2 permits...
-Acquired 2 permits.
-Released 2 permits.
+Acquiring 10 permits on iteration 0...
+Acquired 2 permits on iteration 0.
+Released 2 permits on iteration 0.
+Acquiring 2 permits on iteration 1...
+Acquired 2 permits on iteration 1.
+Released 2 permits on iteration 1.
+Acquiring 6 permits on iteration 0...
+Acquiring 1 permits on iteration 0...
+Acquired 6 permits on iteration 0.
+Released 6 permits on iteration 0.
+Acquiring 6 permits on iteration 1...
+Acquired 6 permits on iteration 1.
+Released 6 permits on iteration 1.
+Acquiring 2 permits on iteration 2...
+Acquired 4 permits on iteration 0.
+Acquired 2 permits on iteration 2.
+Acquiring 6 permits on iteration 2...
+Released 2 permits on iteration 2.
+Acquiring 2 permits on iteration 3...
+Released 4 permits on iteration 0.
+Acquired 10 permits on iteration 0.
+Acquiring 4 permits on iteration 1...
+Released 10 permits on iteration 0.
+Acquired 4 permits on iteration 1.
+Acquired 1 permits on iteration 0.
+Released 4 permits on iteration 1.
+Acquiring 4 permits on iteration 2...
+Acquiring 10 permits on iteration 1...
+Acquired 6 permits on iteration 2.
+Released 6 permits on iteration 2.
+Acquired 2 permits on iteration 3.
+Released 1 permits on iteration 0.
+Acquiring 1 permits on iteration 1...
+Released 2 permits on iteration 3.
+Acquired 4 permits on iteration 2.
+Acquiring 6 permits on iteration 3...
+Released 4 permits on iteration 2.
+Acquiring 4 permits on iteration 3...
+Acquiring 2 permits on iteration 4...
+Acquired 1 permits on iteration 1.
+Acquired 2 permits on iteration 4.
+Acquired 6 permits on iteration 3.
+Released 2 permits on iteration 4.
+Released 1 permits on iteration 1.
 Finished AcquirerThread for quantity = 2
-Acquired 10 permits.
-Released 10 permits.
-Acquiring 10 permits...
-Acquired 10 permits.
-Released 10 permits.
-Acquiring 10 permits...
-Acquired 10 permits.
-Released 10 permits.
+Released 6 permits on iteration 3.
+Acquired 10 permits on iteration 1.
+Acquiring 6 permits on iteration 4...
+Acquiring 1 permits on iteration 2...
+Released 10 permits on iteration 1.
+Acquired 4 permits on iteration 3.
+Acquired 6 permits on iteration 4.
+Released 4 permits on iteration 3.
+Acquired 1 permits on iteration 2.
+Acquiring 10 permits on iteration 2...
+Released 1 permits on iteration 2.
+Acquiring 4 permits on iteration 4...
+Released 6 permits on iteration 4.
+Acquiring 1 permits on iteration 3...
+Acquired 10 permits on iteration 2.
+Finished AcquirerThread for quantity = 6
+Acquired 4 permits on iteration 4.
+Released 10 permits on iteration 2.
+Acquired 1 permits on iteration 3.
+Released 4 permits on iteration 4.
+Released 1 permits on iteration 3.
+Acquiring 10 permits on iteration 3...
+Acquiring 1 permits on iteration 4...
+Finished AcquirerThread for quantity = 4
+Acquired 10 permits on iteration 3.
+Released 10 permits on iteration 3.
+Acquired 1 permits on iteration 4.
+Acquiring 10 permits on iteration 4...
+Released 1 permits on iteration 4.
+Finished AcquirerThread for quantity = 1
+Acquired 10 permits on iteration 4.
+Released 10 permits on iteration 4.
 Finished AcquirerThread for quantity = 10
 BUILD SUCCESSFUL (total time: 0 seconds)

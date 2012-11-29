@@ -3,8 +3,7 @@ package uk.ac.york.cs.modules.popl.drm511.poplformative2;
 import java.util.concurrent.Semaphore;
 
 /**
- * Hello world!
- *
+ * Demonstrate MatchedSemaphore
  */
 public class App 
 {

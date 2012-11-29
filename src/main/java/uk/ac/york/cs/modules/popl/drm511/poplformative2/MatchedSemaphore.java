@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package uk.ac.york.cs.modules.popl.drm511.poplformative2;
 
 import java.util.ArrayList;
@@ -9,6 +5,13 @@ import java.util.HashMap;
 import java.util.concurrent.Semaphore;
 
 /**
+ * Wraps the native Java Semaphore to guarantee matched interactions
+ *
+ * It is an error for a client to release a different number of permits from
+ * this semaphore from the number the client acquired.
+ *
+ * Clients are identified by passing their 'this' pointer 
+ * to acquire() and release()
  *
  * @author drm
  */
@@ -25,30 +28,60 @@ public class MatchedSemaphore {
     public void acquire(Object client, int permits) {
         semaphore.acquireUninterruptibly(permits);
         synchronized (this) {
-            if (!clients.containsKey(client)) {
-                clients.put(client, new ArrayList<Integer>());
-            }
-            clients.get(client).add(permits);
+            allocatePermitsToClient(client, permits);
         }
     }
 
-    public void release(Object client, int permits) {
-        synchronized (this) {
-            // we must have given permits to that client
-            if (!clients.containsKey(client)) {
-                throw new UnmatchedAccessException();
-            }
-            // we must have given that many permits to that client
-            if (!clients.get(client).contains(permits)) {
-                throw new UnmatchedAccessException();
-            }
-            // release the permits both from the semaphore and our store
-            semaphore.release(permits);
-            clients.get(client).remove(new Integer(permits));
-            // don't bother keeping information for old clients we no longer care about
-            if (clients.get(client).isEmpty()) {
-                clients.remove(client);
-            }
+    public synchronized void release(Object client, int permits) {
+        clientMustExist(client);
+        clientMustHavePermits(client, permits);
+        semaphore.release(permits);
+        deallocatePermitsFromClient(client, permits);
+        removeClientIfEmpty(client);
+    }
+
+    private boolean allocatePermitsToClient(Object client, int permits) {
+        ensureClientHasEntry(client);
+        return clients.get(client).add(permits);
+    }
+
+    private void clientMustExist(Object client) throws UnmatchedAccessException {
+        if (!hasClient(client)) {
+            throw new UnmatchedAccessException();
         }
+    }
+
+    private void clientMustHavePermits(Object client, int permits) throws UnmatchedAccessException {
+        if (!clientHasNPermits(client, permits)) {
+            throw new UnmatchedAccessException();
+        }
+    }
+
+    private void deallocatePermitsFromClient(Object client, int permits) {
+        clients.get(client).remove(new Integer(permits));
+    }
+
+    private void removeClientIfEmpty(Object client) {
+        if (clientHasNoPermits(client)) {
+            clients.remove(client);
+        }
+    }
+
+    private void ensureClientHasEntry(Object client) {
+        if (!hasClient(client)) {
+            clients.put(client, new ArrayList<Integer>());
+        }
+    }
+
+    private boolean hasClient(Object client) {
+        return clients.containsKey(client);
+    }
+
+    private boolean clientHasNPermits(Object client, int permits) {
+        return clients.get(client).contains(permits);
+    }
+
+    private boolean clientHasNoPermits(Object client) {
+        return clients.get(client).isEmpty();
     }
 }

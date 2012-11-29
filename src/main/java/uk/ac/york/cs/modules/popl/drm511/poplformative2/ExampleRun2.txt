@@ -1,22 +1,26 @@
+run:
 Starting AcquirerThread for quantity = 1
-Exception in thread "Thread-1" uk.ac.york.cs.modules.popl.drm511.poplformative2.UnmatchedAccessException
-Starting AcquirerThread for quantity = 10
-Starting AcquirerThread for quantity = 2
+Exception in thread "Thread-2" Exception in thread "Thread-0" uk.ac.york.cs.modules.popl.drm511.poplformative2.UnmatchedAccessException
 Starting AcquirerThread for quantity = 4
-Acquiring 2 permits...
-Acquiring 10 permits...
-Acquiring 1 permits...
-Acquiring 4 permits...
+Acquiring 4 permits on iteration 0...
+Acquiring 1 permits on iteration 0...
+Starting AcquirerThread for quantity = 2
+Acquiring 2 permits on iteration 0...
+Starting AcquirerThread for quantity = 10
+Acquiring 10 permits on iteration 0...
+Acquired 4 permits on iteration 0.
+Acquired 2 permits on iteration 0.
 Starting AcquirerThread for quantity = 6
-Acquiring 6 permits...
-Acquired 2 permits.
-Acquired 1 permits.
-Acquired 4 permits.
-	at uk.ac.york.cs.modules.popl.drm511.poplformative2.MatchedSemaphore.release(MatchedSemaphore.java:43)
-	at uk.ac.york.cs.modules.popl.drm511.poplformative2.AcquirerThread.run(AcquirerThread.java:30)
-Exception in thread "Thread-2" uk.ac.york.cs.modules.popl.drm511.poplformative2.UnmatchedAccessException
-	at uk.ac.york.cs.modules.popl.drm511.poplformative2.MatchedSemaphore.release(MatchedSemaphore.java:43)
-	at uk.ac.york.cs.modules.popl.drm511.poplformative2.AcquirerThread.run(AcquirerThread.java:30)
-Exception in thread "Thread-0" uk.ac.york.cs.modules.popl.drm511.poplformative2.UnmatchedAccessException
-	at uk.ac.york.cs.modules.popl.drm511.poplformative2.MatchedSemaphore.release(MatchedSemaphore.java:43)
-	at uk.ac.york.cs.modules.popl.drm511.poplformative2.AcquirerThread.run(AcquirerThread.java:30)
+Acquiring 6 permits on iteration 0...
+Acquired 1 permits on iteration 0.
+	at uk.ac.york.cs.modules.popl.drm511.poplformative2.MatchedSemaphore.clientMustHavePermits(MatchedSemaphore.java:56)
+	at uk.ac.york.cs.modules.popl.drm511.poplformative2.MatchedSemaphore.release(MatchedSemaphore.java:37)
+	at uk.ac.york.cs.modules.popl.drm511.poplformative2.AcquirerThread.run(AcquirerThread.java:24)
+uk.ac.york.cs.modules.popl.drm511.poplformative2.UnmatchedAccessException
+	at uk.ac.york.cs.modules.popl.drm511.poplformative2.MatchedSemaphore.clientMustHavePermits(MatchedSemaphore.java:56)
+	at uk.ac.york.cs.modules.popl.drm511.poplformative2.MatchedSemaphore.release(MatchedSemaphore.java:37)
+	at uk.ac.york.cs.modules.popl.drm511.poplformative2.AcquirerThread.run(AcquirerThread.java:24)
+Exception in thread "Thread-1" uk.ac.york.cs.modules.popl.drm511.poplformative2.UnmatchedAccessException
+	at uk.ac.york.cs.modules.popl.drm511.poplformative2.MatchedSemaphore.clientMustHavePermits(MatchedSemaphore.java:56)
+	at uk.ac.york.cs.modules.popl.drm511.poplformative2.MatchedSemaphore.release(MatchedSemaphore.java:37)
+	at uk.ac.york.cs.modules.popl.drm511.poplformative2.AcquirerThread.run(AcquirerThread.java:24)
