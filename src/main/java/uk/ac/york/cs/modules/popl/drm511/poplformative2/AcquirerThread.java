@@ -4,6 +4,8 @@
  */
 package uk.ac.york.cs.modules.popl.drm511.poplformative2;
 import java.util.concurrent.Semaphore;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 /**
@@ -12,10 +14,10 @@ import java.util.concurrent.Semaphore;
  */
 public class AcquirerThread extends Thread {
     
-    private Semaphore semaphore;
+    private MatchedSemaphore semaphore;
     private int quantity;
 
-    public AcquirerThread(Semaphore semaphore, int quantity) {
+    public AcquirerThread(MatchedSemaphore semaphore, int quantity) {
         this.semaphore = semaphore;
         this.quantity = quantity;
     }
@@ -25,12 +27,13 @@ public class AcquirerThread extends Thread {
         System.out.println("Starting AcquirerThread for quantity = " + quantity);
         for (int i = 0; i < 5; i++) {
             System.out.println("Acquiring " + quantity + " permits...");
-            semaphore.acquireUninterruptibly(quantity);
+            semaphore.acquire(this, quantity);
             System.out.println("Acquired " + quantity + " permits.");
-            semaphore.release(quantity);
+            semaphore.release(this, quantity);
             System.out.println("Released " + quantity + " permits.");
         }
         System.out.println("Finished AcquirerThread for quantity = " + quantity);
     }
     
 }
+ 
