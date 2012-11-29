@@ -1,0 +1,86 @@
+Starting AcquirerThread for quantity = 1
+Starting AcquirerThread for quantity = 4
+Starting AcquirerThread for quantity = 2
+Acquiring 2 permits...
+Acquiring 4 permits...
+Acquiring 1 permits...
+Acquired 2 permits.
+Starting AcquirerThread for quantity = 6
+Acquiring 6 permits...
+Acquired 4 permits.
+Acquired 1 permits.
+Acquired 6 permits.
+Released 6 permits.
+Released 4 permits.
+Starting AcquirerThread for quantity = 10
+Acquiring 10 permits...
+Acquired 10 permits.
+Released 10 permits.
+Acquiring 10 permits...
+Released 2 permits.
+Acquired 10 permits.
+Released 10 permits.
+Acquiring 4 permits...
+Acquired 4 permits.
+Released 4 permits.
+Acquiring 4 permits...
+Acquiring 6 permits...
+Released 1 permits.
+Acquiring 1 permits...
+Acquiring 10 permits...
+Acquired 6 permits.
+Released 6 permits.
+Acquiring 6 permits...
+Acquired 6 permits.
+Released 6 permits.
+Acquiring 6 permits...
+Acquired 6 permits.
+Released 6 permits.
+Acquiring 6 permits...
+Acquired 6 permits.
+Released 6 permits.
+Finished AcquirerThread for quantity = 6
+Acquired 1 permits.
+Released 1 permits.
+Acquiring 1 permits...
+Acquired 1 permits.
+Released 1 permits.
+Acquiring 1 permits...
+Acquired 1 permits.
+Released 1 permits.
+Acquiring 1 permits...
+Acquired 1 permits.
+Released 1 permits.
+Finished AcquirerThread for quantity = 1
+Acquired 4 permits.
+Released 4 permits.
+Acquiring 4 permits...
+Acquired 4 permits.
+Released 4 permits.
+Acquiring 4 permits...
+Acquired 4 permits.
+Released 4 permits.
+Finished AcquirerThread for quantity = 4
+Acquiring 2 permits...
+Acquired 2 permits.
+Released 2 permits.
+Acquiring 2 permits...
+Acquired 2 permits.
+Released 2 permits.
+Acquiring 2 permits...
+Acquired 2 permits.
+Released 2 permits.
+Acquiring 2 permits...
+Acquired 2 permits.
+Released 2 permits.
+Finished AcquirerThread for quantity = 2
+Acquired 10 permits.
+Released 10 permits.
+Acquiring 10 permits...
+Acquired 10 permits.
+Released 10 permits.
+Acquiring 10 permits...
+Acquired 10 permits.
+Released 10 permits.
+Finished AcquirerThread for quantity = 10
+BUILD SUCCESSFUL (total time: 0 seconds)
