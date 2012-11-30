@@ -19,9 +19,9 @@ public class AcquirerThread extends Thread {
         System.out.println("Starting AcquirerThread for quantity = " + quantity);
         for (int i = 0; i < 5; i++) {
             System.out.println("Acquiring " + quantity + " permits on iteration " + i + "...");
-            semaphore.acquire(this, quantity);
+            semaphore.acquire(quantity);
             System.out.println("Acquired " + quantity + " permits on iteration " + i + ".");
-            semaphore.release(this, quantity);
+            semaphore.release(quantity);
             System.out.println("Released " + quantity + " permits on iteration " + i + ".");
         }
         System.out.println("Finished AcquirerThread for quantity = " + quantity);

@@ -7,81 +7,87 @@ import java.util.concurrent.Semaphore;
 /**
  * Wraps the native Java Semaphore to guarantee matched interactions
  *
- * It is an error for a client to release a different number of permits from
- * this semaphore from the number the client acquired.
+ * It is an error for a thread to release a different number of permits from
+ * this semaphore from the number the thread acquired.
  *
- * Clients are identified by passing their 'this' pointer 
- * to acquire() and release()
+ * Threads are identified by passing their 'this' pointer to acquire() and
+ * release()
  *
  * @author drm
  */
 public class MatchedSemaphore {
 
     private Semaphore semaphore;
-    private HashMap<Object, ArrayList<Integer>> clients;
+    private HashMap<Object, ArrayList<Integer>> threads;
 
     public MatchedSemaphore(int permits) {
         semaphore = new Semaphore(permits);
-        clients = new HashMap<Object, ArrayList<Integer>>();
+        threads = new HashMap<Object, ArrayList<Integer>>();
     }
 
-    public void acquire(Object client, int permits) {
+    public void acquire(int permits) {
         semaphore.acquireUninterruptibly(permits);
-        synchronized (this) {
-            allocatePermitsToClient(client, permits);
-        }
+        allocatePermits(permits);
     }
 
-    public synchronized void release(Object client, int permits) {
-        clientMustExist(client);
-        clientMustHavePermits(client, permits);
+    public synchronized void release(int permits) {
+        threadMustExist();
+        threadMustHavePermits(permits);
         semaphore.release(permits);
-        deallocatePermitsFromClient(client, permits);
-        removeClientIfEmpty(client);
+        deallocatePermits(permits);
+        removeThreadIfEmpty();
     }
 
-    private boolean allocatePermitsToClient(Object client, int permits) {
-        ensureClientHasEntry(client);
-        return clients.get(client).add(permits);
+    private synchronized boolean allocatePermits(int permits) {
+        ensureThreadHasEntry();
+        return threadEntry().add(permits);
     }
 
-    private void clientMustExist(Object client) throws UnmatchedAccessException {
-        if (!hasClient(client)) {
+    private void deallocatePermits(int permits) {
+        threadEntry().remove(new Integer(permits));
+    }
+
+    private void threadMustExist() {
+        if (!hasThreadEntry()) {
             throw new UnmatchedAccessException();
         }
     }
 
-    private void clientMustHavePermits(Object client, int permits) throws UnmatchedAccessException {
-        if (!clientHasNPermits(client, permits)) {
+    private void threadMustHavePermits(int permits) {
+        if (!threadHas_N_Permits(permits)) {
             throw new UnmatchedAccessException();
         }
     }
 
-    private void deallocatePermitsFromClient(Object client, int permits) {
-        clients.get(client).remove(new Integer(permits));
-    }
-
-    private void removeClientIfEmpty(Object client) {
-        if (clientHasNoPermits(client)) {
-            clients.remove(client);
+    private void removeThreadIfEmpty() {
+        if (threadHasNoPermits()) {
+            threads.remove(currentThread());
         }
     }
 
-    private void ensureClientHasEntry(Object client) {
-        if (!hasClient(client)) {
-            clients.put(client, new ArrayList<Integer>());
+    private void ensureThreadHasEntry() {
+        if (!hasThreadEntry()) {
+            threads.put(currentThread(), new ArrayList<Integer>());
         }
     }
 
-    private boolean hasClient(Object client) {
-        return clients.containsKey(client);
+    private boolean threadHas_N_Permits(int permits) {
+        return threadEntry().contains(permits);
     }
 
-    private boolean clientHasNPermits(Object client, int permits) {
-        return clients.get(client).contains(permits);
+    private boolean threadHasNoPermits() {
+        return threadEntry().isEmpty();
     }
 
-    private boolean clientHasNoPermits(Object client) {
-        return clients.get(client).isEmpty();
+    private boolean hasThreadEntry() {
+        return threads.containsKey(currentThread());
+    }
+
+    private ArrayList<Integer> threadEntry() {
+        return threads.get(currentThread());
+    }
+
+    private Thread currentThread() {
+        return Thread.currentThread();
     }
 }
